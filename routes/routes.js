@@ -4,7 +4,7 @@ const client = require("../db/db");
 router.get("/books", async function (req, res) {
   await client.connect(async (err) => {
     if (err) {
-      return;
+      return err;
     }
     const collection = await client.db("LearningBag").collection("books");
     const booksData = await collection.find().toArray();
