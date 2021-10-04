@@ -1,13 +1,15 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const cors = require("cors");
 const router = require("./routes/routes");
+
+const uri = "https://learningbag.netlify.app";
 
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors({ origin: "https://learningbag.netlify.app" }));
+app.use(cors({ origin: "*" }));
 
 // routers
 app.use(router);
