@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const client = require("../db/db");
 // routes
-router.get("/books", async function (req, res) {
+router.get("/books", async (req, res) => {
   await client.connect(async (err) => {
     if (err) {
       return err;
@@ -10,6 +10,11 @@ router.get("/books", async function (req, res) {
     const booksData = await collection.find().toArray();
     res.status(200).json(booksData);
   });
+});
+
+router.post("/register", async (req, res) => {
+  const { username, email, password } = req.body;
+  console.log(req.body);
 });
 
 router.get("/", (req, res) => {
